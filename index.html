@@ -16,8 +16,10 @@
     <div class="filters">
       <input type="date" id="startDate" />
       <input type="date" id="endDate" />
-      <button>Get Space Images</button>
+      <button id="getImages">Get Space Images</button>
     </div>
+
+    <div id="loading" class="hidden">🔄 Loading space photos…</div>
 
     <div id="gallery" class="gallery">
       <div class="placeholder">
@@ -27,7 +29,27 @@
     </div>
   </div>
 
+  <!-- Modal (hidden by default) -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <img id="modal-img" src="" alt="Large view">
+      <h2 id="modal-title"></h2>
+      <p id="modal-date"></p>
+      <p id="modal-explanation"></p>
+    </div>
+  </div>
+
   <script src="js/dateRange.js"></script>
   <script src="js/script.js"></script>
+  <script>
+    // Safeguard: force-hide modal on load
+    window.addEventListener('load', () => {
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modal-img');
+      modal.classList.add('hidden');
+      modalImg.src = '';
+    });
+  </script>
 </body>
 </html>
